@@ -9,19 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-public class StockHelper {  
-	
-	String symbol = ""; 
-	double price = 0.0; 
-	int volume = 0; 
-	double pe = 0.0;
-	double eps = 0.0; 
-	double week52low = 0.0; 
-	double week52high = 0.0; 
-	double daylow = 0.0; 
-	double dayhigh = 0.0; 
-	double movingav50day = 0.0; 
-	double marketcap = 0.0; 
+class StockHelper {  
 	
 	/*
 	* Returns a Stock Object that contains info about a specified stock.
@@ -29,10 +17,19 @@ public class StockHelper {
 	* @return 	a stock object containing info about the company's stock
 	* @see Stock
 	*/
-	public Stock getStock(String symbol) {  
-		
-		Stock stock = new Stock();
-		
+	static Stock getStock(String symbol) {  
+		String sym = symbol.toUpperCase();
+		double price = 0.0;
+		int volume = 0;
+		double pe = 0.0;
+		double eps = 0.0;
+		double week52low = 0.0;
+		double week52high = 0.0;
+		double daylow = 0.0;
+		double dayhigh = 0.0;
+		double movingav50day = 0.0;
+		double marketcap = 0.0;
+	
 		try { 
 			
 			// Retrieve CSV File
@@ -106,16 +103,13 @@ public class StockHelper {
 				marketcap = Double.parseDouble(stockinfo[9]);   
 			} 
 			
-			// Build Stock Object 
-			stock = new Stock(symbol, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap);
-			
 		} catch (IOException e) {
 			Logger log = Logger.getLogger(StockHelper.class.getName()); 
 			log.log(Level.SEVERE, e.toString(), e);
+			return null;
 		}
 		
-		return stock;
+		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap);
 		
 	}
-	
 }
