@@ -43,7 +43,7 @@ To test the library, run StockTest.java as a jUnit Test.
 
 Special Thanks To: 
 
-* [erbycfisher](https://github.com/erbycfischer) 
+* [erbycfischer](https://github.com/erbycfischer) 
     
 ## License 
 
