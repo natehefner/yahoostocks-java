@@ -7,7 +7,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 class StockFetcher {  
 	
@@ -42,66 +41,19 @@ class StockFetcher {
 			String line = br.readLine(); 
 			String[] stockinfo = line.split(","); 
 			
-			// Check Our Data
-			if (Pattern.matches("N/A", stockinfo[0])) {  
-				price = 0.00;   
-			} else { 
-				price = Double.parseDouble(stockinfo[0]);  
-			}  
+			// Handle Our Data
+			StockHelper sh = new StockHelper();
 			
-			if (Pattern.matches("N/A", stockinfo[1])) {  
-				volume = 0;   
-			} else { 
-				volume = Integer.parseInt(stockinfo[1]);  
-			} 
-	  
-			if (Pattern.matches("N/A", stockinfo[2])) {  
-				pe = 0;   
-			} else { 
-				pe = Double.parseDouble(stockinfo[2]); 
-			}
-  
-			if (Pattern.matches("N/A", stockinfo[3])) {  
-				eps = 0;   
-			} else { 
-				eps = Double.parseDouble(stockinfo[3]);  
-			}
-			    
-			if (Pattern.matches("N/A", stockinfo[4])) {  
-				week52low = 0;   
-			} else { 
-				week52low = Double.parseDouble(stockinfo[4]);  
-			}
-			    
-			if (Pattern.matches("N/A", stockinfo[5])) {  
-				week52high = 0;   
-			} else { 
-				week52high = Double.parseDouble(stockinfo[5]);   
-			}     
-			
-			if (Pattern.matches("N/A", stockinfo[6])) {  
-				daylow = 0;   
-			} else { 
-				daylow = Double.parseDouble(stockinfo[6]); 
-			}
-				     
-			if (Pattern.matches("N/A", stockinfo[7])) {  
-				dayhigh = 0;   
-			} else { 
-				dayhigh = Double.parseDouble(stockinfo[7]);  
-			}   
-			
-			if (Pattern.matches("N/A - N/A", stockinfo[8])) {  
-				movingav50day = 0;   
-			} else { 
-				movingav50day = Double.parseDouble(stockinfo[8]);  
-			}
-				     
-			if (Pattern.matches("N/A", stockinfo[9])) {  
-				marketcap = 0;   
-			} else { 
-				marketcap = Double.parseDouble(stockinfo[9]);   
-			} 
+			price = sh.checkDouble(stockinfo[0]);
+			volume = sh.checkInt(stockinfo[1]);
+			pe = sh.checkDouble(stockinfo[2]);
+			eps = sh.checkDouble(stockinfo[3]);
+			week52low = sh.checkDouble(stockinfo[4]);
+			week52high = sh.checkDouble(stockinfo[5]);
+			daylow = sh.checkDouble(stockinfo[6]);
+			dayhigh = sh.checkDouble(stockinfo[7]);   
+			movingav50day = sh.checkDouble(stockinfo[8]);
+			marketcap = sh.checkDouble(stockinfo[9]);
 			
 		} catch (IOException e) {
 			Logger log = Logger.getLogger(StockFetcher.class.getName()); 
