@@ -12,8 +12,10 @@ classes
 
 *.class
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.ear
 /bin
+
+.DS_Store
