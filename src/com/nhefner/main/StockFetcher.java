@@ -42,7 +42,8 @@ public class StockFetcher {
 			
 			// Parse CSV Into Array
 			String line = br.readLine(); 
-			String[] stockinfo = line.split(","); 
+			//Only split on commas that aren't in quotes
+			String[] stockinfo = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 			
 			// Handle Our Data
 			StockHelper sh = new StockHelper();
