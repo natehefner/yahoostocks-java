@@ -28,6 +28,7 @@ getDaylow();
 getDayhigh(); 
 getMovingav50day(); 
 getMarketcap();
+getName()
 ```
     
 ## Testing 
