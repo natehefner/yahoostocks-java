@@ -1,5 +1,6 @@
 package com.nhefner.main;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,11 +30,12 @@ public class StockFetcher {
 		double movingav50day = 0.0;
 		double marketcap = 0.0;
 		String name = "";
-	
+		String currency = "";
+		
 		try { 
 			
 			// Retrieve CSV File
-			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3n");
+			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3nc4");
 			URLConnection connection = yahoo.openConnection(); 
 			InputStreamReader is = new InputStreamReader(connection.getInputStream());
 			BufferedReader br = new BufferedReader(is);  
@@ -55,7 +57,8 @@ public class StockFetcher {
 			dayhigh = sh.handleDouble(stockinfo[7]);   
 			movingav50day = sh.handleDouble(stockinfo[8]);
 			marketcap = sh.handleDouble(stockinfo[9]);
-			name = stockinfo[10].replace("\"", "");;
+			name = stockinfo[10].replace("\"", "");
+			currency = stockinfo[11];
 			
 		} catch (IOException e) {
 			Logger log = Logger.getLogger(StockFetcher.class.getName()); 
@@ -63,7 +66,7 @@ public class StockFetcher {
 			return null;
 		}
 		
-		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap, name);
+		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap, name,currency);
 		
 	}
 }

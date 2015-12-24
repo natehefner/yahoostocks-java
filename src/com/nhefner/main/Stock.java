@@ -14,9 +14,10 @@ public class Stock {
 	private double movingav50day;
 	private double marketcap;
 	private String name;
+	private String currency;
 	
 	public Stock(String symbol, double price, int volume, double pe, double eps, double week52low,      
-					double week52high, double daylow, double dayhigh, double movingav50day, double marketcap, String name) {	
+					double week52high, double daylow, double dayhigh, double movingav50day, double marketcap, String name, String currency) {	
 		this.symbol = symbol; 
 		this.price = price;	
 		this.volume = volume; 
@@ -29,7 +30,12 @@ public class Stock {
 		this.movingav50day = movingav50day; 
 		this.marketcap = marketcap;
 		this.name = name;
+		this.currency = currency;
 	} 
+	
+	public String getCurrency(){
+		return this.currency;
+	}
 	
 	public String getSymbol() { 
 		return this.symbol;		
