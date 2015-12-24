@@ -28,8 +28,9 @@ getDaylow();
 getDayhigh(); 
 getMovingav50day(); 
 getMarketcap();
-getName()
-getCurrency()
+getName();
+getCurrency();
+getShortRatio();
 ```
     
 ## Testing 
