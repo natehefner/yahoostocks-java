@@ -63,7 +63,7 @@ public class StockFetcher {
 			return null;
 		}
 		
-		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap);
+		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap, name);
 		
 	}
 }
