@@ -58,7 +58,7 @@ public class StockFetcher {
 			movingav50day = sh.handleDouble(stockinfo[8]);
 			marketcap = sh.handleDouble(stockinfo[9]);
 			name = stockinfo[10].replace("\"", "");
-			currency = stockinfo[11];
+			currency = stockinfo[11].replace("\"", "");
 			
 		} catch (IOException e) {
 			Logger log = Logger.getLogger(StockFetcher.class.getName()); 
