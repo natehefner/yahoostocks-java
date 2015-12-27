@@ -1,5 +1,6 @@
 package com.nhefner.main;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,18 +29,22 @@ public class StockFetcher {
 		double dayhigh = 0.0;
 		double movingav50day = 0.0;
 		double marketcap = 0.0;
-	
+		String name = "";
+		String currency = "";
+		double shortRatio = 0.0;
+		
 		try { 
 			
 			// Retrieve CSV File
-			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3");
+			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3nc4s7");
 			URLConnection connection = yahoo.openConnection(); 
 			InputStreamReader is = new InputStreamReader(connection.getInputStream());
 			BufferedReader br = new BufferedReader(is);  
 			
 			// Parse CSV Into Array
 			String line = br.readLine(); 
-			String[] stockinfo = line.split(","); 
+			//Only split on commas that aren't in quotes
+			String[] stockinfo = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 			
 			// Handle Our Data
 			StockHelper sh = new StockHelper();
@@ -54,6 +59,9 @@ public class StockFetcher {
 			dayhigh = sh.handleDouble(stockinfo[7]);   
 			movingav50day = sh.handleDouble(stockinfo[8]);
 			marketcap = sh.handleDouble(stockinfo[9]);
+			name = stockinfo[10].replace("\"", "");
+			currency = stockinfo[11].replace("\"", "");
+			shortRatio = sh.handleDouble(stockinfo[12]);
 			
 		} catch (IOException e) {
 			Logger log = Logger.getLogger(StockFetcher.class.getName()); 
@@ -61,7 +69,7 @@ public class StockFetcher {
 			return null;
 		}
 		
-		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap);
+		return new Stock(sym, price, volume, pe, eps, week52low, week52high, daylow, dayhigh, movingav50day, marketcap, name,currency, shortRatio);
 		
 	}
 }

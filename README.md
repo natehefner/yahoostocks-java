@@ -28,6 +28,9 @@ getDaylow();
 getDayhigh(); 
 getMovingav50day(); 
 getMarketcap();
+getName();
+getCurrency();
+getShortRatio();
 ```
     
 ## Testing 
@@ -38,7 +41,6 @@ To test the library, run StockTest.java as a jUnit Test.
 
 * Retrieve Mutliple Stocks at Once
 * More Methods 
-* View Stock Currency
 
 ## Contributors 
 
