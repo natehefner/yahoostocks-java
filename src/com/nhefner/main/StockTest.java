@@ -21,6 +21,8 @@ public class StockTest {
 		System.out.println("The full name is: " + facebook.getName());
 		System.out.println("The currency is: " + facebook.getCurrency());
 		System.out.println("The short ratio is: " + facebook.getShortRatio());
+		System.out.println("The previous close was: " + facebook.getPreviousClose());
+		System.out.println("The open for today was: " + facebook.getOpen());
 	} 
 
 }
