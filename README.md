@@ -33,6 +33,7 @@ getCurrency();
 getShortRatio();
 getPreviousClose();
 getOpen();
+getExchange();
 ```
     
 ## Testing 

@@ -23,6 +23,8 @@ public class StockTest {
 		System.out.println("The short ratio is: " + facebook.getShortRatio());
 		System.out.println("The previous close was: " + facebook.getPreviousClose());
 		System.out.println("The open for today was: " + facebook.getOpen());
+		System.out.println("The exchange is " + facebook.getExchange());
+		
 	} 
 
 }
