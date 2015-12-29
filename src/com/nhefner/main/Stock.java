@@ -18,9 +18,10 @@ public class Stock {
 	private double shortRatio;
 	private double previousClose;
 	private double open;
+	private String exchange;
 	
 	public Stock(String symbol, double price, int volume, double pe, double eps, double week52low,      
-					double week52high, double daylow, double dayhigh, double movingav50day, double marketcap, String name, String currency, double shortRatio, double previousClose, double open) {	
+					double week52high, double daylow, double dayhigh, double movingav50day, double marketcap, String name, String currency, double shortRatio, double previousClose, double open, String exchange) {	
 		this.symbol = symbol; 
 		this.price = price;	
 		this.volume = volume; 
@@ -37,7 +38,12 @@ public class Stock {
 		this.shortRatio = shortRatio;
 		this.previousClose = previousClose;
 		this.open = open;
+		this.exchange = exchange;
 	} 
+	
+	public String getExchange(){
+		return this.exchange;
+	}
 	
 	public double getPreviousClose(){
 		return this.previousClose;
