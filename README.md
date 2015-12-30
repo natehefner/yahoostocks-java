@@ -31,6 +31,9 @@ getMarketcap();
 getName();
 getCurrency();
 getShortRatio();
+getPreviousClose();
+getOpen();
+getExchange();
 ```
     
 ## Testing 
