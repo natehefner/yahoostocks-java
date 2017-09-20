@@ -38,13 +38,14 @@ public class StockFetcher {
 		try { 
 			
 			// Retrieve CSV File
-			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3nc4s7pox");
-			URLConnection connection = yahoo.openConnection(); 
+			//URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3nc4s7pox");
+			URL yahoo = new URL("http://download.finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3nc4s7pox");
+			URLConnection connection = yahoo.openConnection();
 			InputStreamReader is = new InputStreamReader(connection.getInputStream());
 			BufferedReader br = new BufferedReader(is);  
 			
 			// Parse CSV Into Array
-			String line = br.readLine(); 
+			String line = br.readLine();
 			//Only split on commas that aren't in quotes
 			String[] stockinfo = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 			
