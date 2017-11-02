@@ -17,7 +17,7 @@ public class StockFetcher {
 	* @return 	a stock object containing info about the company's stock
 	* @see Stock
 	*/
-	static Stock getStock(String symbol) {  
+	public static Stock getStock(String symbol) {  
 		String sym = symbol.toUpperCase();
 		double price = 0.0;
 		int volume = 0;
